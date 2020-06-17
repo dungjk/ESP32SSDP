@@ -25,7 +25,10 @@ License (MIT license):
   THE SOFTWARE.
 
 */
-#ifdef ARDUINO_ARCH_ESP32
+#ifndef ARDUINO_ARCH_ESP32
+#error ESP32SSPD is support ESP32 only
+#endif
+
 #ifndef ESP32SSDP_H
 #define ESP32SSDP_H
 
@@ -62,31 +65,31 @@ class SSDPClass{
     bool begin();
     void end();
 
-    void schema(WiFiClient client);
+    SSDPClass& schema(WiFiClient client);
 
-    void setDeviceType(const String& deviceType) { setDeviceType(deviceType.c_str()); }
-    void setDeviceType(const char *deviceType);
-    void setName(const String& name) { setName(name.c_str()); }
-    void setName(const char *name);
-    void setURL(const String& url) { setURL(url.c_str()); }
-    void setURL(const char *url);
-    void setSchemaURL(const String& url) { setSchemaURL(url.c_str()); }
-    void setSchemaURL(const char *url);
-    void setSerialNumber(const String& serialNumber) { setSerialNumber(serialNumber.c_str()); }
-    void setSerialNumber(const char *serialNumber);
-    void setSerialNumber(const uint32_t serialNumber);
-    void setModelName(const String& name) { setModelName(name.c_str()); }
-    void setModelName(const char *name);
-    void setModelNumber(const String& num) { setModelNumber(num.c_str()); }
-    void setModelNumber(const char *num);
-    void setModelURL(const String& url) { setModelURL(url.c_str()); }
-    void setModelURL(const char *url);
-    void setManufacturer(const String& name) { setManufacturer(name.c_str()); }
-    void setManufacturer(const char *name);
-    void setManufacturerURL(const String& url) { setManufacturerURL(url.c_str()); }
-    void setManufacturerURL(const char *url);
-    void setHTTPPort(uint16_t port);
-    void setTTL(uint8_t ttl);
+    SSDPClass& setDeviceType(const String& deviceType) { setDeviceType(deviceType.c_str()); }
+    SSDPClass& setDeviceType(const char *deviceType);
+    SSDPClass& setName(const String& name) { setName(name.c_str()); }
+    SSDPClass& setName(const char *name);
+    SSDPClass& setURL(const String& url) { setURL(url.c_str()); }
+    SSDPClass& setURL(const char *url);
+    SSDPClass& setSchemaURL(const String& url) { setSchemaURL(url.c_str()); }
+    SSDPClass& setSchemaURL(const char *url);
+    SSDPClass& setSerialNumber(const String& serialNumber) { setSerialNumber(serialNumber.c_str()); }
+    SSDPClass& setSerialNumber(const char *serialNumber);
+    SSDPClass& setSerialNumber(const uint32_t serialNumber);
+    SSDPClass& setModelName(const String& name) { setModelName(name.c_str()); }
+    SSDPClass& setModelName(const char *name);
+    SSDPClass& setModelNumber(const String& num) { setModelNumber(num.c_str()); }
+    SSDPClass& setModelNumber(const char *num);
+    SSDPClass& setModelURL(const String& url) { setModelURL(url.c_str()); }
+    SSDPClass& setModelURL(const char *url);
+    SSDPClass& setManufacturer(const String& name) { setManufacturer(name.c_str()); }
+    SSDPClass& setManufacturer(const char *name);
+    SSDPClass& setManufacturerURL(const String& url) { setManufacturerURL(url.c_str()); }
+    SSDPClass& setManufacturerURL(const char *url);
+    SSDPClass& setHTTPPort(uint16_t port);
+    SSDPClass& setTTL(uint8_t ttl);
 
   protected:
     void _send(ssdp_method_t method);
@@ -125,5 +128,4 @@ class SSDPClass{
 extern SSDPClass SSDP;
 #endif
 
-#endif
 #endif

@@ -25,7 +25,6 @@ License (MIT license):
   THE SOFTWARE.
 
 */
-#ifdef ARDUINO_ARCH_ESP32
 #include <functional>
 #include "ESP32SSDP.h"
 #include "WiFiUdp.h"
@@ -236,7 +235,7 @@ void SSDPClass::_send(ssdp_method_t method){
  _server->endPacket();
 }
 
-void SSDPClass::schema(WiFiClient client){
+SSDPClass& SSDPClass::schema(WiFiClient client){
   IPAddress ip = localIP();
   char buffer[strlen_P(_ssdp_schema_template)+1];
   strcpy_P(buffer, _ssdp_schema_template);
@@ -253,6 +252,8 @@ void SSDPClass::schema(WiFiClient client){
     _manufacturerURL,
     _uuid
   );
+
+  return *this;
 }
 
 void SSDPClass::_update(){
@@ -393,56 +394,69 @@ void SSDPClass::_update(){
 
 }
 
-void SSDPClass::setSchemaURL(const char *url){
+SSDPClass& SSDPClass::setSchemaURL(const char *url){
   strlcpy(_schemaURL, url, sizeof(_schemaURL));
+  return *this;
 }
 
-void SSDPClass::setHTTPPort(uint16_t port){
+SSDPClass& SSDPClass::setHTTPPort(uint16_t port){
   _port = port;
+  return *this;
 }
 
-void SSDPClass::setDeviceType(const char *deviceType){
+SSDPClass& SSDPClass::setDeviceType(const char *deviceType){
   strlcpy(_deviceType, deviceType, sizeof(_deviceType));
+  return *this;
 }
 
-void SSDPClass::setName(const char *name){
+SSDPClass& SSDPClass::setName(const char *name){
   strlcpy(_friendlyName, name, sizeof(_friendlyName));
+  return *this;
 }
 
-void SSDPClass::setURL(const char *url){
+SSDPClass& SSDPClass::setURL(const char *url){
   strlcpy(_presentationURL, url, sizeof(_presentationURL));
+  return *this;
 }
 
-void SSDPClass::setSerialNumber(const char *serialNumber){
+SSDPClass& SSDPClass::setSerialNumber(const char *serialNumber){
   strlcpy(_serialNumber, serialNumber, sizeof(_serialNumber));
+  return *this;
 }
 
-void SSDPClass::setSerialNumber(const uint32_t serialNumber){
+SSDPClass& SSDPClass::setSerialNumber(const uint32_t serialNumber){
   snprintf(_serialNumber, sizeof(uint32_t)*2+1, "%08X", serialNumber);
+  return *this;
 }
 
-void SSDPClass::setModelName(const char *name){
+SSDPClass& SSDPClass::setModelName(const char *name){
   strlcpy(_modelName, name, sizeof(_modelName));
+  return *this;
 }
 
-void SSDPClass::setModelNumber(const char *num){
+SSDPClass& SSDPClass::setModelNumber(const char *num){
   strlcpy(_modelNumber, num, sizeof(_modelNumber));
+  return *this;
 }
 
-void SSDPClass::setModelURL(const char *url){
+SSDPClass& SSDPClass::setModelURL(const char *url){
   strlcpy(_modelURL, url, sizeof(_modelURL));
+  return *this;
 }
 
-void SSDPClass::setManufacturer(const char *name){
+SSDPClass& SSDPClass::setManufacturer(const char *name){
   strlcpy(_manufacturer, name, sizeof(_manufacturer));
+  return *this;
 }
 
-void SSDPClass::setManufacturerURL(const char *url){
+SSDPClass& SSDPClass::setManufacturerURL(const char *url){
   strlcpy(_manufacturerURL, url, sizeof(_manufacturerURL));
+  return *this;
 }
 
-void SSDPClass::setTTL(const uint8_t ttl){
+SSDPClass& SSDPClass::setTTL(const uint8_t ttl){
   _ttl = ttl;
+  return *this;
 }
 
 void SSDPClass::_onTimerStatic(SSDPClass* self) {
@@ -474,6 +488,4 @@ void SSDPClass::_stopTimer() {
 
 #if !defined(NO_GLOBAL_INSTANCES) && !defined(NO_GLOBAL_SSDP)
 SSDPClass SSDP;
-#endif
-
 #endif
