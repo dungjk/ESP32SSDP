@@ -67,26 +67,26 @@ class SSDPClass{
 
     SSDPClass& schema(WiFiClient client);
 
-    SSDPClass& setDeviceType(const String& deviceType) { setDeviceType(deviceType.c_str()); }
+    SSDPClass& setDeviceType(const String& deviceType) { return setDeviceType(deviceType.c_str()); }
     SSDPClass& setDeviceType(const char *deviceType);
-    SSDPClass& setName(const String& name) { setName(name.c_str()); }
+    SSDPClass& setName(const String& name) { return setName(name.c_str()); }
     SSDPClass& setName(const char *name);
-    SSDPClass& setURL(const String& url) { setURL(url.c_str()); }
+    SSDPClass& setURL(const String& url) { return setURL(url.c_str()); }
     SSDPClass& setURL(const char *url);
-    SSDPClass& setSchemaURL(const String& url) { setSchemaURL(url.c_str()); }
+    SSDPClass& setSchemaURL(const String& url) { return setSchemaURL(url.c_str()); }
     SSDPClass& setSchemaURL(const char *url);
-    SSDPClass& setSerialNumber(const String& serialNumber) { setSerialNumber(serialNumber.c_str()); }
+    SSDPClass& setSerialNumber(const String& serialNumber) { return setSerialNumber(serialNumber.c_str()); }
     SSDPClass& setSerialNumber(const char *serialNumber);
     SSDPClass& setSerialNumber(const uint32_t serialNumber);
-    SSDPClass& setModelName(const String& name) { setModelName(name.c_str()); }
+    SSDPClass& setModelName(const String& name) { return setModelName(name.c_str()); }
     SSDPClass& setModelName(const char *name);
-    SSDPClass& setModelNumber(const String& num) { setModelNumber(num.c_str()); }
+    SSDPClass& setModelNumber(const String& num) { return setModelNumber(num.c_str()); }
     SSDPClass& setModelNumber(const char *num);
-    SSDPClass& setModelURL(const String& url) { setModelURL(url.c_str()); }
+    SSDPClass& setModelURL(const String& url) { return setModelURL(url.c_str()); }
     SSDPClass& setModelURL(const char *url);
-    SSDPClass& setManufacturer(const String& name) { setManufacturer(name.c_str()); }
+    SSDPClass& setManufacturer(const String& name) { return setManufacturer(name.c_str()); }
     SSDPClass& setManufacturer(const char *name);
-    SSDPClass& setManufacturerURL(const String& url) { setManufacturerURL(url.c_str()); }
+    SSDPClass& setManufacturerURL(const String& url) { return setManufacturerURL(url.c_str()); }
     SSDPClass& setManufacturerURL(const char *url);
     SSDPClass& setHTTPPort(uint16_t port);
     SSDPClass& setTTL(uint8_t ttl);
