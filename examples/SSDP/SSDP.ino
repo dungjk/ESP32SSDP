@@ -26,18 +26,19 @@ void setup() {
     HTTP.begin();
 
     Serial.printf("Starting SSDP...\n");
-    SSDP.setSchemaURL("description.xml");
-    SSDP.setHTTPPort(80);
-    SSDP.setName("Philips hue clone");
-    SSDP.setSerialNumber("001788102201");
-    SSDP.setURL("index.html");
-    SSDP.setModelName("Philips hue bridge 2012");
-    SSDP.setModelNumber("929000226503");
-    SSDP.setModelURL("http://www.meethue.com");
-    SSDP.setManufacturer("Royal Philips Electronics");
-    SSDP.setManufacturerURL("http://www.philips.com");
-    SSDP.setDeviceType("upnp:rootdevice"); //to appear as root device
-    SSDP.begin();
+    SSDP
+      .setSchemaURL("description.xml")
+      .setHTTPPort(80)
+      .setName("Philips hue clone")
+      .setSerialNumber("001788102201")
+      .setURL("index.html")
+      .setModelName("Philips hue bridge 2012")
+      .setModelNumber("929000226503")
+      .setModelURL("http://www.meethue.com")
+      .setManufacturer("Royal Philips Electronics")
+      .setManufacturerURL("http://www.philips.com")
+      .setDeviceType("upnp:rootdevice") //to appear as root device
+      .begin();
 
     Serial.printf("Ready!\n");
   } else {
